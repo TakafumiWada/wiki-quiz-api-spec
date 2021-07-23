@@ -2,6 +2,12 @@
 
 ## 実行手順
 
+### モジュールのインストール
+
+```shell
+ yarn install
+```
+
 ### 実行ファイルを書き換える
 
 node_modules/swagger-ui-dist/index.html #42
@@ -14,7 +20,6 @@ url: "/spec/openapi.yaml",
 ### サーバーの起動
 
 ```shell
- yarn install
  yarn start
 ```
 
