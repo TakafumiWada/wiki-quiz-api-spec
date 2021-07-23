@@ -1,0 +1,97 @@
+swagger: "2.0"
+info:
+  description: "[QuizWiki](https://www.quiz-wiki.com/)のバックエンドです。"
+  version: "1.0.0"
+  title: "wiki-quiz-api-spec"
+tags:
+  - name: "article"
+    description: "Wikipediaの記事に関するAPI"
+schemes:
+  - "http"
+paths:
+  /article/get:
+    get:
+      tags:
+        - "article"
+      summary: "記事データの取得"
+      description: "Wikipediaの記事データをランダムで取得します"
+      responses:
+        200:
+          description: "成功時のレスポンス"
+          schema:
+            type: "object"
+            properties:
+              title:
+                type: "string"
+                example: "佐藤緋美"
+              topic:
+                type: "object"
+                properties:
+                  title:
+                    type: "string"
+                    example: "経歴"
+                  content:
+                    type: "string"
+                    example: "2017年、ラフォーレ原宿のキャンペーンの広告でモデルデビュー。~"
+              contents:
+                type: "array"
+                items:
+                  type: "object"
+                  properties:
+                    title:
+                      type: "string"
+                      example: "経歴"
+                    content:
+                      type: "string"
+                      example: "2017年、ラフォーレ原宿のキャンペーンの広告でモデルデビュー。~"
+              categories:
+                type: "array"
+                items:
+                  type: "string"
+                example:
+                  - "1999年生"
+                  - "CHARA"
+                  - "アメリカ系日本人"
+                  - "ノルウェー系日本人"
+                  - "プロジェクト人物伝項目"
+                  - "俳優に関するスタブ"
+                  - "存命人物"
+                  - "日本の男優"
+                  - "日本の男性モデル"
+                  - "東京都出身の人物"
+              words:
+                type: "array"
+                items:
+                  type: "string"
+                example:
+                  - "1999年生"
+                  - "..."
+              images:
+                type: "string"
+                example: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg"
+              url:
+                type: "string"
+                example: "https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E7%B7%8B%E7%BE%8E"
+  /article/search:
+    post:
+      tags:
+        - "article"
+      summary: "検索結果を取得"
+      description: "Wikipediaの記事データをランダムで取得します"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "検索するワードを送ります"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              text:
+                type: "string"
+                example: "山田たろう"
+      responses:
+        200:
+          description: "成功時のレスポンス"
+          schema:
+            type: "string"
+            example: "山田太郎"
