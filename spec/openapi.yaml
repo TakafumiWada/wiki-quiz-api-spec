@@ -73,22 +73,18 @@ paths:
                 type: "string"
                 example: "https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E7%B7%8B%E7%BE%8E"
   /article/search:
-    post:
+    get:
       tags:
         - "article"
       summary: "検索結果を取得"
       description: "Wikipediaの記事データをランダムで取得します"
       parameters:
-        - in: "body"
-          name: "body"
-          description: "検索するワードを送ります"
+        - name: "text"
+          in: "query"
+          description: "検索をかけてほしいワード"
           required: true
-          schema:
-            type: "object"
-            properties:
-              text:
-                type: "string"
-                example: "山田たろう"
+          type: "string"
+          example: "山田たろう"
       responses:
         200:
           description: "成功時のレスポンス"
