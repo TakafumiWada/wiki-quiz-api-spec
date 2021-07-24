@@ -1,0 +1,10 @@
+# WikiQuizApiSpec.InlineResponse200Topic
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**title** | **String** |  | [optional] 
+**content** | **String** |  | [optional] 
+
+

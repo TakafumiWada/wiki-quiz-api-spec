@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "generate": "rm -rf generated && openapi-generator-cli generate -g javascript -i ./spec/openapi.yaml -o ./generated"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@openapitools/openapi-generator-cli": "^2.3.7",
     "express": "^4.17.1",
+    "openapi-client-axios": "^4.0.0",
     "swagger-ui-dist": "^4.0.0-beta.0"
   }
 }

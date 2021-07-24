@@ -84,7 +84,6 @@ paths:
           description: "検索をかけてほしいワード"
           required: true
           type: "string"
-          example: "山田たろう"
       responses:
         200:
           description: "成功時のレスポンス"
