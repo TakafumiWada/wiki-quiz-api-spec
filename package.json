@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "generate": "rm -rf generated && openapi-generator-cli generate -g typescript-axios -i ./spec/openapi.yaml -o ./generated"
+    "generate": "rm -rf ../wiki-quiz-front-v2/src/api && openapi-generator-cli generate -g typescript-axios -i ./spec/openapi.yaml -o ../wiki-quiz-front-v2/src/api"
   },
   "author": "",
   "license": "ISC",
