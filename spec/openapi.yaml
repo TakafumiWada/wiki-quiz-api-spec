@@ -6,10 +6,9 @@ info:
 tags:
   - name: "Question"
     description: "クイズの問題に関するAPI"
-host: localhost:8888
+host: wiki-quiz-backend-dev.an.r.appspot.com
 basePath: /v2
 schemes:
-  - "http"
   - "https"
 paths:
   /question:
@@ -22,7 +21,7 @@ paths:
         200:
           description: "正しいレスポンス"
           schema:
-            type: "object"
+            $ref: "#/definitions/Question"
             properties:
               title:
                 type: "string"
@@ -58,7 +57,7 @@ paths:
         500:
           description: "MediaWikiとの接続に失敗。またはスクリプトエラー"
   /question:confirm:
-    get:
+    post:
       tags:
         - "Question"
       summary: "回答と一致するかを検証"
@@ -69,20 +68,44 @@ paths:
           description: "Pet object that needs to be added to the store"
           required: true
           schema:
-            $ref: "#/definitions/Confirm"
+            $ref: "#/definitions/ConfirmReq"
       responses:
         200:
           description: "成功時のレスポンス"
           schema:
-            type: "object"
+            $ref: "#/definitions/Confirm"
             properties:
               isCorrect:
                 type: "boolean"
                 example: "true"
+        400:
+          description: "searchWordが空欄。"
         500:
           description: "MediaWikiとの接続に失敗。またはスクリプトエラー"
 definitions:
+  Question:
+    type: "object"
+    properties:
+      title:
+        type: "string"
+      categories:
+        type: "array"
+        items:
+          type: "string"
+      words:
+        type: "array"
+        items:
+          type: "string"
+      images:
+        type: "string"
+      url:
+        type: "string"
   Confirm:
+    type: "object"
+    properties:
+      isCorrect:
+        type: boolean
+  ConfirmReq:
     type: "object"
     properties:
       searchWord:
