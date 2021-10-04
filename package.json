@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "generate": "rm -rf generated && openapi-generator-cli generate -g javascript -i ./spec/openapi.yaml -o ./generated"
+    "generate": "rm -rf generated && openapi-generator-cli generate -g typescript-axios -i ./spec/openapi.yaml -o ./generated"
   },
   "author": "",
   "license": "ISC",

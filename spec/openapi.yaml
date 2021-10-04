@@ -1,15 +1,18 @@
 swagger: "2.0"
 info:
-  description: "[QuizWiki](https://www.quiz-wiki.com/)のバックエンドです。"
-  version: "1.0.0"
+  description: "[QuizWiki](https://www.quiz-wiki.com/)のAPI仕様書です。"
+  version: "2.0.0"
   title: "wiki-quiz-api-spec"
 tags:
   - name: "Question"
     description: "クイズの問題に関するAPI"
+host: localhost:8888
+basePath: /v2
 schemes:
   - "http"
+  - "https"
 paths:
-  /v1/question:
+  /question:
     get:
       tags:
         - "Question"
@@ -54,23 +57,19 @@ paths:
                 example: "www.wikipekia.com"
         500:
           description: "MediaWikiとの接続に失敗。またはスクリプトエラー"
-  /v1/question/confirm:
+  /question:confirm:
     get:
       tags:
         - "Question"
       summary: "回答と一致するかを検証"
       description: "Wikipediaの記事データをランダムで取得します"
       parameters:
-        - name: "searchWord"
-          in: "query"
-          description: "検索をかけてほしい回答"
+        - in: "body"
+          name: "body"
+          description: "Pet object that needs to be added to the store"
           required: true
-          type: "string"
-        - name: "answer"
-          in: "query"
-          description: "答え"
-          required: true
-          type: "string"
+          schema:
+            $ref: "#/definitions/Confirm"
       responses:
         200:
           description: "成功時のレスポンス"
@@ -82,3 +81,13 @@ paths:
                 example: "true"
         500:
           description: "MediaWikiとの接続に失敗。またはスクリプトエラー"
+definitions:
+  Confirm:
+    type: "object"
+    properties:
+      searchWord:
+        type: string
+        example: "問題文のタイトル"
+      answer:
+        type: string
+        example: "答え"
