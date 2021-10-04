@@ -10,6 +10,7 @@ host: wiki-quiz-backend-dev.an.r.appspot.com
 basePath: /v2
 schemes:
   - "https"
+  - "http"
 paths:
   /question:
     get:
