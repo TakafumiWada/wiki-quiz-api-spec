@@ -49,7 +49,7 @@ paths:
                   - "ワード7"
                   - "ワード8"
                   - "ワード9"
-              images:
+              image:
                 type: "string"
                 example: "www.image.png"
               url:
@@ -97,7 +97,7 @@ definitions:
         type: "array"
         items:
           type: "string"
-      images:
+      image:
         type: "string"
       url:
         type: "string"
