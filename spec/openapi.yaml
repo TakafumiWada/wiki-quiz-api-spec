@@ -7,6 +7,7 @@ tags:
   - name: "Question"
     description: "クイズの問題に関するAPI"
 host: wiki-quiz-backend-dev.an.r.appspot.com
+# host: localhost:8888
 basePath: /v2
 schemes:
   - "https"
